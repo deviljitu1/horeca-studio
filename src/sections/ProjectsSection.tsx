@@ -24,14 +24,14 @@ const ProjectCard = ({
   return (
     <div
       ref={cardRef}
-      className="h-auto md:h-[85vh] sticky top-20 sm:top-24 md:top-32"
+      className="h-auto md:h-[85vh] md:max-h-[800px] sticky top-20 sm:top-24 md:top-28"
       style={{ top: `${20 + index * 20}px` }}
     >
       <motion.div
         style={{ scale }}
         className="rounded-2xl sm:rounded-[40px] md:rounded-[60px]
           border-2 border-[#D7E2EA] bg-[#0C0C0C]
-          p-3 sm:p-5 md:p-8 h-full flex flex-col
+          p-3 sm:p-5 md:p-8 h-full flex flex-col overflow-hidden
           origin-top"
       >
         {/* Top row */}
@@ -59,33 +59,33 @@ const ProjectCard = ({
         </div>
 
         {/* Image grid */}
-        <div className="flex flex-col md:flex-row gap-2 sm:gap-3 md:gap-4 flex-1 min-h-0">
-          {/* Left column — 40% */}
-          <div className="w-full md:w-[40%] flex flex-row md:flex-col gap-2 sm:gap-3 md:gap-4">
-            <div className="h-[100px] sm:h-[130px] md:h-auto md:flex-[4] flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-3 md:gap-4 flex-1 min-h-0 mt-4 md:mt-0 overflow-hidden">
+          {/* Left column */}
+          <div className="md:col-span-5 flex flex-row md:flex-col gap-2 sm:gap-3 md:gap-4 h-[120px] sm:h-[160px] md:h-full">
+            <div className="flex-1 md:flex-[4] min-h-0 overflow-hidden">
               <img
                 src={project.images.col1Top}
                 alt={`${project.name} preview 1`}
-                className="w-full h-full object-cover rounded-xl sm:rounded-[30px] md:rounded-[60px]"
+                className="w-full h-full object-cover rounded-xl sm:rounded-[20px] md:rounded-[30px]"
                 loading="lazy"
               />
             </div>
-            <div className="h-[100px] sm:h-[160px] md:h-auto md:flex-[6] flex-1">
+            <div className="flex-1 md:flex-[6] min-h-0 overflow-hidden">
               <img
                 src={project.images.col1Bottom}
                 alt={`${project.name} preview 2`}
-                className="w-full h-full object-cover rounded-xl sm:rounded-[30px] md:rounded-[60px]"
+                className="w-full h-full object-cover rounded-xl sm:rounded-[20px] md:rounded-[30px]"
                 loading="lazy"
               />
             </div>
           </div>
 
-          {/* Right column — 60% */}
-          <div className="w-full md:w-[60%] h-[160px] sm:h-[200px] md:h-auto md:flex-1">
+          {/* Right column */}
+          <div className="md:col-span-7 h-[160px] sm:h-[220px] md:h-full min-h-0 overflow-hidden">
             <img
               src={project.images.col2}
               alt={`${project.name} preview 3`}
-              className="w-full h-full object-cover rounded-xl sm:rounded-[30px] md:rounded-[60px]"
+              className="w-full h-full object-cover rounded-xl sm:rounded-[20px] md:rounded-[30px]"
               loading="lazy"
             />
           </div>

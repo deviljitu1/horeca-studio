@@ -8,6 +8,16 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Lock body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
@@ -22,7 +32,7 @@ const HeroSection = () => {
 
   return (
     <section 
-      className="h-screen flex flex-col relative" 
+      className="h-[85svh] md:h-screen flex flex-col relative" 
       style={{ overflowX: 'clip' }}
     >
       {/* Background Video */}
@@ -39,8 +49,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/65 z-[1] pointer-events-none"></div>
 
       {/* Navbar */}
-      <FadeIn delay={0} y={-20} className="relative z-50">
-        <nav className="flex justify-between items-center px-4 sm:px-6 md:px-10 pt-4 sm:pt-6 md:pt-8">
+      <div 
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300
+          ${scrolled 
+            ? 'bg-[#0C0C0C]/85 backdrop-blur-lg border-b border-white/5 py-3 sm:py-4' 
+            : 'bg-transparent py-4 sm:py-6 md:py-8'
+          }`}
+      >
+        <nav className="flex justify-between items-center px-4 sm:px-6 md:px-10">
           {/* Logo */}
           <a
             href="#"
@@ -84,7 +100,7 @@ const HeroSection = () => {
             />
           </button>
         </nav>
-      </FadeIn>
+      </div>
 
       {/* ═══════════════════════════════════════════
           Full-Screen Overlay Nav — drops from top

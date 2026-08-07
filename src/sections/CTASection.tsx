@@ -17,7 +17,8 @@ const CTASection = () => {
             className="hero-heading font-black uppercase leading-none tracking-tight mb-6 sm:mb-8"
             style={{ fontSize: 'clamp(2rem, 8vw, 100px)' }}
           >
-            Experience Before You Invest
+            Experience Before <br />
+            <span className="whitespace-nowrap">You Invest</span>
           </h2>
         </FadeIn>
 
